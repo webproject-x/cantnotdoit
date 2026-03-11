@@ -1280,3 +1280,12 @@ img, button, a, div, span,
     vector-effect: non-scaling-stroke;
   }
 }
+
+@media (max-width: 1029px) {
+  .flyout-text.visible {
+    animation: none !important;
+    opacity: 1 !important;
+    transform: translateY(0) !important;
+    filter: none !important;
+  }
+}

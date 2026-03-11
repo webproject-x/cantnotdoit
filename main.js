@@ -348,16 +348,16 @@ function typeWrite(el, text) {
 
   const rect = block.getBoundingClientRect();
 
-  if (rect.top < enterPoint) {
-    block.classList.add('visible');
-    text.classList.add('visible');
+if (rect.top < enterPoint) {
+  block.classList.add('visible');
+  text.classList.add('visible');
 
-    if (text.dataset.typed !== "1") {
-      prepareHeight(text, text.dataset.text || "");
-      typeWrite(text, text.dataset.text || "");
-      text.dataset.typed = "1";
-    }
+  if (!MOBILE_TEXT_MODE && text.dataset.typed !== "1") {
+    prepareHeight(text, text.dataset.text || "");
+    typeWrite(text, text.dataset.text || "");
+    text.dataset.typed = "1";
   }
+}
 
   if (!MOBILE_TEXT_MODE && !directionDown && rect.top > leavePoint) {
     block.classList.remove('visible');
@@ -369,6 +369,15 @@ function typeWrite(el, text) {
   }
 });
     }
+
+    if (MOBILE_TEXT_MODE) {
+  texts.forEach((text) => {
+    const value = text.dataset.text || "";
+    prepareHeight(text, value, true);
+    text.textContent = value;
+    text.dataset.typed = "1";
+  });
+}
 
     window.addEventListener('scroll', onScroll);
     onScroll();
