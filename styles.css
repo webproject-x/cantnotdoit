@@ -1190,27 +1190,27 @@ html.theme-invert .img-modal__body{
 
 @media (max-width: 1150px), (hover: none) and (pointer: coarse){
   .flyout{
-    transition: opacity .28s ease, transform .28s ease !important;
-    transform: translateY(10px);
+    transition: opacity .2s ease !important;
+    transform: none !important;
     opacity: 0;
     will-change: auto;
   }
 
   .flyout.visible{
-    transform: translateY(0);
+    transform: none !important;
     opacity: 1;
   }
 
   .flyout-text{
-    transition: opacity .22s ease, transform .22s ease !important;
-    transform: translateY(6px);
+    transition: opacity .2s ease !important;
+    transform: none !important;
     opacity: 0;
     will-change: auto;
   }
 
   .flyout-text.visible{
     animation: none !important;
-    transform: translateY(0) !important;
+    transform: none !important;
     opacity: 1 !important;
     filter: none !important;
   }
