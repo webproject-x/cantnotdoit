@@ -1295,3 +1295,11 @@ img, button, a, div, span,
     transform: none !important;
   }
 }
+
+.footer-flag,
+.store-buttons{
+  will-change: transform, opacity, filter;
+  transform: translateZ(0);
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
