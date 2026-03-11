@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="favicon.ico" type="image/x-icon">
+  <title>Can't not do it</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+<svg id="roadSvg" aria-hidden="true" preserveAspectRatio="none">
+  <defs>
+    <filter id="cpShadow" x="-60%" y="-60%" width="220%" height="220%">
+  <feDropShadow dx="0" dy="10" stdDeviation="6" flood-color="rgba(0,0,0,0.22)"/>
+</filter>
+
+    <filter id="roadShadowFilter" x="-50%" y="-50%" width="200%" height="200%">
+      <feDropShadow dx="0" dy="18" stdDeviation="10" flood-color="rgba(0,0,0,0.28)"/>
+    </filter>
+  </defs>
+</svg>
+
+  <div class="phone-container" id="phoneContainer">
+    <div class="title">
+      <h1>Can't not do it</h1>
+      <p>Доведи каждую задачу до конца</p>
+    </div>
+
+    
+<div class="lang-dd" id="langDD">
+<button class="lang-dd__btn" id="langBtn"
+        type="button"
+        aria-haspopup="listbox"
+        aria-expanded="false">
+    <span class="lang-dd__txt" id="langTxt">English</span>
+    <svg class="lang-dd__caret" viewBox="0 0 14 8" aria-hidden="true">
+      <path d="M1 1l6 6 6-6" fill="none"
+            stroke="currentColor" stroke-width="2.2"
+            stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+  </button>
+
+  <div class="lang-dd__menu" id="langMenu" role="listbox" tabindex="-1">
+    <button class="lang-dd__item" role="option" data-lang="en" aria-selected="true" type="button">English</button>
+    <button class="lang-dd__item" role="option" data-lang="ru" aria-selected="false" type="button">Русский</button>
+  </div>
+</div>
+
+<div class="theme-toggle" id="themeToggleWrap">
+  <button
+    class="theme-toggle__btn"
+    id="themeToggleBtn"
+    type="button"
+    aria-label="Toggle theme"
+    aria-pressed="false"
+  >
+    <span class="theme-toggle__icon">◐</span>
+  </button>
+</div>
+
+    <div class="phone" id="phone">
+
+      <div class="btn left mute"></div>
+      <div class="btn left vol-up"></div>
+      <div class="btn left vol-down"></div>
+      <div class="btn right power"></div>
+
+      <div class="screen">
+        <div class="notch" aria-hidden="true">
+        </div>
+
+<div class="screen-hero">
+
+  <span class="screen-logo-wrap">
+  <img class="screen-logo" src="logo.png" alt="Logo">
+</span>
+
+  <div class="screen-caption">Can’t not do it</div>
+
+<button class="screen-cta" id="screenCta" type="button" aria-label="Download">
+  <span class="cta-label cta-label--idle">Скачать</span>
+
+  <span class="cta-loader" aria-hidden="true">
+    <span class="cta-loader-ring"></span>
+    <span class="cta-loader-text">Загрузка</span>
+  </span>
+
+  <span class="cta-label cta-label--done" aria-hidden="true">
+    <span class="cta-check" aria-hidden="true">
+      <svg class="cta-checkSvg" viewBox="0 0 24 24" aria-hidden="true">
+        <circle class="cta-ring" cx="12" cy="12" r="9" pathLength="1"></circle>
+        <path class="cta-tick" d="M7.2 12.4 L10.3 15.4 L16.8 8.8" pathLength="1"></path>
+      </svg>
+    </span>
+    Установлено
+  </span>
+</button>
+
+  <div class="screen-hint">Доступно для iOS (MacOS) и Android</div>
+</div>
+
+        <div class="home" aria-hidden="true"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="content"></div>
+
+<section class="flyouts">
+  <div class="flyout-box left">
+    <div class="flyout left"></div>
+    <div class="flyout-text-stack">
+      <div class="flyout-text-ghost" aria-hidden="true"></div>
+      <div class="flyout-text" data-text="Записывай мысли как заметки — приложение само превращает их в понятные задачи. Больше не нужно держать всё в голове: идеи сразу становятся действиями, которые можно выполнить."></div>
+    </div>
+  </div>
+
+  <div class="flyout-box right">
+    <div class="flyout right"></div>
+    <div class="flyout-text-stack">
+      <div class="flyout-text-ghost" aria-hidden="true"></div>
+      <div class="flyout-text" data-text="Приоритеты расставляются так, чтобы ты всегда видел “что реально важно сейчас”. Это помогает избегать ловушки срочности и не тратить день на мелкие дела вместо ключевых."></div>
+      </div>
+  </div>
+
+  <div class="flyout-box left">
+    <div class="flyout left"></div>
+    <div class="flyout-text-stack">
+      <div class="flyout-text-ghost" aria-hidden="true"></div>
+      <div class="flyout-text" data-text="План на день собирается вокруг твоих задач, а не наоборот. Когда у тебя есть ясный план (по сути — тайм-блоки), меньше переключений, меньше хаоса и проще держать фокус."></div>
+      </div>
+    </div>
+
+  <div class="flyout-box right">
+    <div class="flyout right"></div>
+    <div class="flyout-text-stack">
+      <div class="flyout-text-ghost" aria-hidden="true"></div>
+      <div class="flyout-text" data-text="Напоминания приходят вовремя, чтобы ты не “забыл и не отложил”. Это особенно важно для задач на будущее: исследования по prospective memory показывают, что напоминания реально помогают вспоминать и выполнять намерения."></div>
+    </div>
+  </div>
+
+  <div class="flyout-box left">
+    <div class="flyout left"></div>
+    <div class="flyout-text-stack">
+      <div class="flyout-text-ghost" aria-hidden="true"></div>
+      <div class="flyout-text" data-text="Каждая задача ведёт к результату: видишь прогресс и закрываешь этапы по пути. Меньше “начал и бросил”, больше ощущения движения вперёд — ровно то, что в твоём слогане “доведи до конца”."></div>
+    </div>
+  </div>
+
+  <div class="flyout-box right">
+    <div class="flyout right"></div>
+    <div class="flyout-text-stack">
+      <div class="flyout-text-ghost" aria-hidden="true"></div>
+      <div class="flyout-text" data-text="Система простая: “записал → уточнил → организовал → сделал”. Это очень близко к логике GTD, где главное — выгрузить всё из головы и перевести в следующий конкретный шаг."></div>
+      </div>
+  </div>
+</section>
+
+  <script src="main.js" defer></script>
+  <!-- Image modal -->
+<dialog class="img-modal" id="imgModal" aria-label="Image preview">
+  <button class="img-modal__close" id="imgModalClose" type="button" aria-label="Close">×</button>
+
+  <div class="img-modal__body" id="imgModalBody"></div>
+</dialog>
+
+<footer class="footer">
+
+<div class="footer-flag" style="display: flex; justify-content: center;">
+<svg width="300" height="300" viewBox="0 0 280 200" xmlns="http://www.w3.org/2000/svg">
+
+  <g>
+    <animateTransform
+      attributeName="transform"
+      type="rotate"
+      values="-1.5 80 60; 1.5 80 60; -1.5 80 60"
+      dur="2s"
+      repeatCount="indefinite"
+      calcMode="spline"
+      keyTimes="0;0.5;1"
+      keySplines="0.42 0 0.58 1; 0.42 0 0.58 1"
+    />
+
+    <path d="M80 60 
+             H220 
+             C240 60 250 70 240 85 
+             L200 125 
+             L240 165 
+             C250 180 240 190 220 190 
+             H80 Z"
+          fill="black"/>
+  </g>
+
+  <path d="M80 60 
+           Q70 60 70 70 
+           V320 
+           H95 
+           V60 
+           Z"
+        fill="black"/>
+</svg>
+</div>
+
+  <div class="footer-inner">
+    <p class="footer-title">Can't not do it</p>
+    <div class="store-buttons" id="storeButtons">
+  <a class="store-btn" href="https://apps.apple.com/" target="_blank" rel="noopener noreferrer" aria-label="App Store">
+    <span class="store-ic" aria-hidden="true">
+
+      <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" viewBox="0 0 16 16">
+        <path d="M11.182.008C11.148-.03 9.923.023 8.857 1.18c-1.066 1.156-.902 2.482-.878 2.516s1.52.087 2.475-1.258.762-2.391.728-2.43m3.314 11.733c-.048-.096-2.325-1.234-2.113-3.422s1.675-2.789 1.698-2.854-.597-.79-1.254-1.157a3.7 3.7 0 0 0-1.563-.434c-.108-.003-.483-.095-1.254.116-.508.139-1.653.589-1.968.607-.316.018-1.256-.522-2.267-.665-.647-.125-1.333.131-1.824.328-.49.196-1.422.754-2.074 2.237-.652 1.482-.311 3.83-.067 4.56s.625 1.924 1.273 2.796c.576.984 1.34 1.667 1.659 1.899s1.219.386 1.843.067c.502-.308 1.408-.485 1.766-.472.357.013 1.061.154 1.782.539.571.197 1.111.115 1.652-.105.541-.221 1.324-1.059 2.238-2.758q.52-1.185.473-1.282"/>
+      </svg>
+    </span>
+    <span class="store-txt">
+      <span class="store-top">Скачать в</span>
+      <span class="store-bot">App Store</span>
+    </span>
+  </a>
+
+  <a class="store-btn" href="https://play.google.com/store" target="_blank" rel="noopener noreferrer" aria-label="Google Play">
+    <span class="store-ic" aria-hidden="true">
+
+      <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" viewBox="0 0 16 16">
+        <path d="M14.222 9.374c1.037-.61 1.037-2.137 0-2.748L11.528 5.04 8.32 8l3.207 2.96zm-3.595 2.116L7.583 8.68 1.03 14.73c.201 1.029 1.36 1.61 2.303 1.055zM1 13.396V2.603L6.846 8zM1.03 1.27l6.553 6.05 3.044-2.81L3.333.215C2.39-.341 1.231.24 1.03 1.27"/>
+      </svg>
+    </span>
+    <span class="store-txt">
+      <span class="store-top">Скачать в</span>
+      <span class="store-bot">Google Play</span>
+    </span>
+  </a>
+</div>
+    <p class="footer-copy">© 2026 Can't not do it. Все права защищены.</p>
+  </div>
+
+</footer>
+
+</body>
+</html>
