@@ -907,16 +907,17 @@
 html, body{ overflow-x: hidden; }
 
 #roadCheckpoints .cp{
-  filter: url(#cpShadow);
+  filter: none !important;
 }
 
 #roadCheckpoints .cp circle{
-  fill: rgba(255,255,255,0.96);
-  stroke: rgba(0,0,0,0.92);
+  fill: #fff !important;
+  stroke: #000 !important;
 }
 
 #roadCheckpoints .cp path{
-  stroke: rgba(0,0,0,0.92);
+  fill: none !important;
+  stroke: #000 !important;
 }
 
 .flyout-text-stack{
@@ -1228,4 +1229,54 @@ img, button, a, div, span,
   user-select: none;
   -webkit-touch-callout: none;
   -webkit-user-drag: none;
+}
+
+@media (max-width: 1150px), (hover: none) and (pointer: coarse){
+  .cta-check,
+  .cta-checkSvg,
+  .cta-ring,
+  .cta-tick,
+  .cta-circle,
+  .cta-circle-bg,
+  .screen.is-done .cta-check,
+  .screen.is-done .cta-checkSvg,
+  .screen.is-done .cta-ring,
+  .screen.is-done .cta-tick,
+  .screen.is-done .cta-circle,
+  .screen.is-done .cta-circle-bg{
+    color: #111 !important;
+    stroke: #111 !important;
+    fill: none !important;
+    opacity: 1 !important;
+    filter: none !important;
+  }
+
+  .cta-check{
+    width: clamp(16px, 4.6vw, 20px);
+    height: clamp(16px, 4.6vw, 20px);
+    flex: 0 0 clamp(16px, 4.6vw, 20px);
+    overflow: hidden;
+    forced-color-adjust: none;
+  }
+
+  .cta-checkSvg{
+    width: 100%;
+    height: 100%;
+    display: block;
+    transform: none !important;
+  }
+
+  .cta-ring,
+  .cta-circle,
+  .cta-circle-bg{
+    stroke-width: 2.2 !important;
+    vector-effect: non-scaling-stroke;
+  }
+
+  .cta-tick{
+    stroke-width: 2.4 !important;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    vector-effect: non-scaling-stroke;
+  }
 }

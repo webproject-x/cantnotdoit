@@ -74,17 +74,34 @@ document.addEventListener("DOMContentLoaded", () => {
     if (hint) hint.textContent = t.hint;
 
     // Тексты флаеров (у тебя они в data-text)
-    const fly = Array.from(document.querySelectorAll(".flyout-text"));
-    fly.forEach((el, i) => {
-      if (!t.flyouts[i]) return;
-      el.dataset.text = t.flyouts[i]; // dataset: :contentReference[oaicite:1]{index=1}
-    });
+const fly = Array.from(document.querySelectorAll(".flyout-text"));
+fly.forEach((el, i) => {
+  if (!t.flyouts[i]) return;
 
-    // Пересчитать высоты/переносы, чтобы блоки не резали текст
-    if (typeof prepareAllFlyoutTextHeights === "function") {
-      prepareAllFlyoutTextHeights(true);
-    }
+  el.dataset.text = t.flyouts[i];
+  el.dataset.typed = "0";
+  el.dataset.twToken = String(Number(el.dataset.twToken || "0") + 1);
 
+  const isMobileText =
+    window.matchMedia("(max-width: 1150px), (hover: none) and (pointer: coarse)").matches;
+
+  if (isMobileText || el.classList.contains("visible")) {
+    el.textContent = t.flyouts[i];
+    el.dataset.typed = "1";
+  } else {
+    el.textContent = "";
+  }
+});
+
+if (typeof prepareAllFlyoutTextHeights === "function") {
+  prepareAllFlyoutTextHeights(true);
+}
+
+requestAnimationFrame(() => {
+  if (typeof prepareAllFlyoutTextHeights === "function") {
+    prepareAllFlyoutTextHeights(true);
+  }
+});
     // Футер: "Скачать в" -> "Download on"
     document.querySelectorAll(".store-top").forEach(el => {
       el.textContent = t.storeTop;
@@ -115,6 +132,13 @@ document.addEventListener("DOMContentLoaded", () => {
 
     try { localStorage.setItem(KEY, lang); } catch(e) {}
     close();
+
+    requestAnimationFrame(() => {
+  if (window.__roadAPI) {
+    window.__roadAPI.rebuild();
+    window.__roadAPI.update();
+  }
+});
   }
 
   let lang = "en";
@@ -351,7 +375,7 @@ function typeWrite(el, text) {
 
     (function () {
   const SVG_NS = "http://www.w3.org/2000/svg";
-
+  
   const cfg = {
     radius: 140,
     phoneLead: 70,
@@ -549,12 +573,13 @@ function typeWrite(el, text) {
     const isMobile = window.matchMedia("(max-width: 1029px)").matches;
     const yOff = isMobile ? cfg.cpYOffsetMobile : cfg.cpYOffset;
     g.setAttribute("transform", `translate(${p.x} ${p.y + yOff})`);
-    g.setAttribute("filter", "url(#cpShadow)");
+  
 
     const fill = document.createElementNS(SVG_NS, "circle");
     fill.setAttribute("r", String(cfg.cpR));
     fill.setAttribute("fill", "#fff");
     fill.setAttribute("opacity", "0");
+    fill.setAttribute("filter", "url(#cpShadow)");
 
     const ring = document.createElementNS(SVG_NS, "circle");
     ring.setAttribute("r", String(cfg.cpR));
@@ -1342,13 +1367,3 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 });
 
-document.addEventListener("copy", e => e.preventDefault());
-document.addEventListener("cut", e => e.preventDefault());
-document.addEventListener("selectstart", e => e.preventDefault());
-document.addEventListener("contextmenu", e => e.preventDefault());
-
-document.addEventListener("touchstart", (e) => {
-  if (e.touches.length > 1) return;
-}, { passive: true });
-
-document.addEventListener("dragstart", e => e.preventDefault());
