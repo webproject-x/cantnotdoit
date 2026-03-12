@@ -1162,8 +1162,13 @@ document.addEventListener("DOMContentLoaded", () => {
   const io = new IntersectionObserver((entries) => {
     entries.forEach((e) => {
       if (e.isIntersecting) {
+
+        wrap.classList.remove("is-inview");
+        void wrap.offsetWidth; // reflow
+
         wrap.classList.add("is-inview");
-        io.unobserve(wrap);
+        } else {
+           wrap.classList.remove("is-inview");
       }
     });
   }, { threshold: 0.35 });
