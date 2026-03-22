@@ -1289,3 +1289,67 @@ img, button, a, div, span,
   }
 }
 
+/* убираем синюю мобильную подсветку у картинок, ссылок и кнопок */
+img,
+svg,
+a,
+button,
+.store-btn,
+.store-ic,
+.screen-cta,
+.lang-dd__btn,
+.lang-dd__item,
+.theme-toggle__btn,
+.img-modal__close,
+.flyout {
+  -webkit-user-select: none;
+  user-select: none;
+  -webkit-touch-callout: none;
+  -webkit-user-drag: none;
+  user-drag: none;
+  -webkit-tap-highlight-color: transparent;
+  tap-highlight-color: transparent;
+  outline: none;
+}
+
+/* убираем синюю обводку при тапе/фокусе */
+a:focus,
+a:active,
+button:focus,
+button:active,
+img:focus,
+img:active,
+.store-btn:focus,
+.store-btn:active,
+.screen-cta:focus,
+.screen-cta:active,
+.lang-dd__btn:focus,
+.lang-dd__btn:active,
+.lang-dd__item:focus,
+.lang-dd__item:active,
+.theme-toggle__btn:focus,
+.theme-toggle__btn:active,
+.img-modal__close:focus,
+.img-modal__close:active,
+.flyout:focus,
+.flyout:active {
+  outline: none;
+  box-shadow: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* текст при этом оставляем выделяемым */
+.title h1,
+.title p,
+.flyout-text,
+.footer-title,
+.footer-copy,
+.store-top,
+.store-bot,
+.screen-caption,
+.screen-hint,
+.cta-label,
+.cta-loader-text {
+  -webkit-user-select: text;
+  user-select: text;
+}
