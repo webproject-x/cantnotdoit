@@ -74,34 +74,35 @@ document.addEventListener("DOMContentLoaded", () => {
     if (hint) hint.textContent = t.hint;
 
     // Тексты флаеров (у тебя они в data-text)
-const fly = Array.from(document.querySelectorAll(".flyout-text"));
-fly.forEach((el, i) => {
-  if (!t.flyouts[i]) return;
+    const fly = Array.from(document.querySelectorAll(".flyout-text"));
+    fly.forEach((el, i) => {
+      if (!t.flyouts[i]) return;
 
-  el.dataset.text = t.flyouts[i];
-  el.dataset.typed = "0";
-  el.dataset.twToken = String(Number(el.dataset.twToken || "0") + 1);
+    el.dataset.text = t.flyouts[i];
+      el.dataset.typed = "0";
+      el.dataset.twToken = String(Number(el.dataset.twToken || "0") + 1);
 
-  const isMobileText =
-    window.matchMedia("(max-width: 1150px), (hover: none) and (pointer: coarse)").matches;
+      const isMobileText =
+        window.matchMedia("(max-width: 1150px), (hover: none) and (pointer: coarse)").matches;
 
-  if (isMobileText || el.classList.contains("visible")) {
-    el.textContent = t.flyouts[i];
-    el.dataset.typed = "1";
-  } else {
-    el.textContent = "";
-  }
-});
+      if (isMobileText || el.classList.contains("visible")) {
+        el.textContent = t.flyouts[i];
+        el.dataset.typed = "1";
+      } else {
+        el.textContent = "";
+      }
+    });
 
-if (typeof prepareAllFlyoutTextHeights === "function") {
-  prepareAllFlyoutTextHeights(true);
-}
+    if (typeof prepareAllFlyoutTextHeights === "function") {
+      prepareAllFlyoutTextHeights(true);
+    }
 
-requestAnimationFrame(() => {
-  if (typeof prepareAllFlyoutTextHeights === "function") {
-    prepareAllFlyoutTextHeights(true);
-  }
-});
+    requestAnimationFrame(() => {
+      if (typeof prepareAllFlyoutTextHeights === "function") {
+        prepareAllFlyoutTextHeights(true);
+      }
+    });
+
     // Футер: "Скачать в" -> "Download on"
     document.querySelectorAll(".store-top").forEach(el => {
       el.textContent = t.storeTop;
@@ -133,12 +134,13 @@ requestAnimationFrame(() => {
     try { localStorage.setItem(KEY, lang); } catch(e) {}
     close();
 
-    requestAnimationFrame(() => {
-  if (window.__roadAPI) {
-    window.__roadAPI.rebuild();
-    window.__roadAPI.update();
-  }
-});
+
+      requestAnimationFrame(() => {
+      if (window.__roadAPI) {
+        window.__roadAPI.rebuild();
+        window.__roadAPI.update();
+      }
+    });
   }
 
   let lang = "en";
@@ -348,14 +350,14 @@ function typeWrite(el, text) {
 
   const rect = block.getBoundingClientRect();
 
-if (rect.top < enterPoint) {
-  block.classList.add('visible');
-  text.classList.add('visible');
+  if (rect.top < enterPoint) {
+    block.classList.add('visible');
+    text.classList.add('visible');
 
-  if (!MOBILE_TEXT_MODE && text.dataset.typed !== "1") {
-    prepareHeight(text, text.dataset.text || "");
-    typeWrite(text, text.dataset.text || "");
-    text.dataset.typed = "1";
+    if (!MOBILE_TEXT_MODE && text.dataset.typed !== "1") {
+      prepareHeight(text, text.dataset.text || "");
+      typeWrite(text, text.dataset.text || "");
+      text.dataset.typed = "1";
   }
 }
 
@@ -370,21 +372,22 @@ if (rect.top < enterPoint) {
 });
     }
 
+
     if (MOBILE_TEXT_MODE) {
-  texts.forEach((text) => {
-    const value = text.dataset.text || "";
-    prepareHeight(text, value, true);
-    text.textContent = value;
-    text.dataset.typed = "1";
-  });
-}
+      texts.forEach((text) => {
+        const value = text.dataset.text || "";
+        prepareHeight(text, value, true);
+        text.textContent = value;
+        text.dataset.typed = "1";
+      });
+    }
 
     window.addEventListener('scroll', onScroll);
     onScroll();
 
     (function () {
   const SVG_NS = "http://www.w3.org/2000/svg";
-  
+
   const cfg = {
     radius: 140,
     phoneLead: 70,
@@ -582,7 +585,6 @@ if (rect.top < enterPoint) {
     const isMobile = window.matchMedia("(max-width: 1029px)").matches;
     const yOff = isMobile ? cfg.cpYOffsetMobile : cfg.cpYOffset;
     g.setAttribute("transform", `translate(${p.x} ${p.y + yOff})`);
-  
 
     const fill = document.createElementNS(SVG_NS, "circle");
     fill.setAttribute("r", String(cfg.cpR));
@@ -1165,10 +1167,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
         wrap.classList.remove("is-inview");
         void wrap.offsetWidth; // reflow
-
         wrap.classList.add("is-inview");
-        } else {
-           wrap.classList.remove("is-inview");
+      } else {
+        wrap.classList.remove("is-inview");
       }
     });
   }, { threshold: 0.35 });
@@ -1376,4 +1377,3 @@ document.addEventListener("DOMContentLoaded", () => {
     applyTheme(isInvert);
   });
 });
-

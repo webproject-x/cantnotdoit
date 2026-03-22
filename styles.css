@@ -1282,16 +1282,10 @@ img, button, a, div, span,
 }
 
 @media (max-width: 1029px) {
-  .flyout.visible,
-  .flyout-text.visible,
-  .store-buttons.is-inview,
-  .store-buttons.is-inview .store-btn {
-    filter: none !important;
-  }
-
   .flyout-text.visible {
     animation: none !important;
     opacity: 1 !important;
     transform: none !important;
   }
 }
+
